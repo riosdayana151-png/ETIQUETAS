@@ -1,0 +1,2203 @@
+<!DOCTYPE html>
+<html lang="es">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <title>
+   Tailwind Studio | Edición Esmeralda
+  </title>
+  <style>
+   :root {
+    --bg:#f0faf7;
+    --panel:#fff;
+    --ink:#183b3a;
+    --sub:#607e7a;
+    --line:#cde6de;
+    --accent:#087f73;
+    --soft:#ddf6ed}
+
+* {
+    box-sizing:border-box}
+
+body {
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:Segoe UI,Arial,sans-serif}
+
+body.dark {
+    --bg:#101f24;
+    --panel:#1b3035;
+    --ink:#edfff8;
+    --sub:#b3d2cb;
+    --line:#38565a;
+    --soft:#244a47}
+
+.layout {
+    display:flex;
+    min-height:100vh}
+
+.side {
+    width:260px;
+    background:#103c40;
+    color:white;
+    padding:25px 15px;
+    position:sticky;
+    top:0;
+    height:100vh;
+    overflow:auto;
+    flex-shrink:0}
+
+.brand {
+    font-size:22px;
+    font-weight:800;
+    padding:10px 12px 28px}
+
+.brand span {
+    color:#5ee0c3}
+
+.side p {
+    font-size:11px;
+    letter-spacing:2px;
+    color:#a7d1ca;
+    padding-left:12px}
+
+.nav {
+    display:grid;
+    gap:5px}
+
+.nav button {
+    background:none;
+    border:0;
+    color:#d5f0e8;
+    text-align:left;
+    padding:12px;
+    border-radius:10px;
+    cursor:pointer;
+    display:flex;
+    justify-content:space-between;
+    gap:6px}
+
+.nav button.active,.nav button:hover {
+    background:#1c6667;
+    color:white}
+
+.nav em {
+    font-style:normal;
+    opacity:.75}
+
+.main {
+    padding:28px 35px 60px;
+    flex:1;
+    min-width:0}
+
+.top {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px}
+
+.top small {
+    color:var(--sub)}
+
+.theme,.order {
+    border:1px solid var(--line);
+    background:var(--panel);
+    color:var(--ink);
+    border-radius:12px;
+    padding:12px;
+    cursor:pointer}
+
+.hero {
+    margin:24px 0;
+    padding:35px;
+    border-radius:23px;
+    background:linear-gradient(120deg,#007b76,#159c86,#f29b62);
+    color:white;
+    overflow:hidden;
+    position:relative}
+
+.hero:after {
+    content:'';
+    position:absolute;
+    right:-50px;
+    top:-80px;
+    width:230px;
+    height:230px;
+    border:35px solid #ffffff1c;
+    border-radius:50%}
+
+.hero h1 {
+    font-size:clamp(27px,4vw,43px);
+    margin:0 0 12px}
+
+.hero p {
+    line-height:1.6;
+    max-width:650px;
+    color:#edfff5}
+
+.stats {
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:24px}
+
+.stat {
+    padding:11px 18px;
+    border:1px solid #ffffff55;
+    background:#ffffff22;
+    border-radius:12px}
+
+.stat strong {
+    font-size:21px}
+
+.stat small {
+    display:block;
+    color:#e0fff0}
+
+.tools {
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    margin:26px 0}
+
+.search {
+    flex:1;
+    min-width:200px;
+    padding:14px 17px;
+    border:1px solid var(--line);
+    background:var(--panel);
+    color:var(--ink);
+    border-radius:12px}
+
+.heading {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    margin:30px 0 18px}
+
+.heading h2 {
+    margin:0;
+    font-size:23px}
+
+.heading span {
+    color:var(--sub);
+    font-size:13px}
+
+.cards {
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(245px,1fr));
+    gap:18px}
+
+.card {
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:17px;
+    overflow:hidden;
+    transition:transform .2s,box-shadow .2s}
+
+.card:hover {
+    transform:translateY(-4px);
+    box-shadow:0 15px 30px #093d3a20}
+
+.stage {
+    height:175px;
+    background:linear-gradient(125deg,#ddf6ed,#fff0dd);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    position:relative}
+
+.sample {
+    padding:14px 20px;
+    border-radius:8px;
+    background:#0c9a87;
+    color:white;
+    font-weight:650;
+    text-align:center;
+    max-width:88%;
+    transition:.35s}
+
+.mini {
+    display:flex;
+    gap:7px;
+    width:82%;
+    height:82%;
+    align-items:center;
+    justify-content:center}
+
+.mini i {
+    background:#0c9a87;
+    width:35px;
+    height:35px;
+    border-radius:5px}
+
+.info {
+    padding:16px}
+
+.info h3 {
+    margin:0 0 8px;
+    font-size:15px;
+    overflow-wrap:anywhere}
+
+.info p {
+    font-size:12px;
+    color:var(--sub);
+    margin:0 0 13px}
+
+.tag {
+    display:inline-block;
+    background:var(--soft);
+    color:var(--accent);
+    border-radius:20px;
+    padding:6px 9px;
+    font-size:11px}
+
+.expand {
+    width:100%;
+    margin-top:13px;
+    background:var(--soft);
+    border:0;
+    border-radius:9px;
+    padding:10px;
+    color:var(--accent);
+    font-weight:700;
+    cursor:pointer}
+
+.overlay {
+    display:none;
+    position:fixed;
+    inset:0;
+    background:#070918b9;
+    z-index:99;
+    align-items:center;
+    justify-content:center;
+    padding:18px}
+
+.overlay.open {
+    display:flex}
+
+.dialog {
+    background:var(--panel);
+    color:var(--ink);
+    width:min(550px,100%);
+    border-radius:20px;
+    padding:24px}
+
+.dialog-head {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px}
+
+.dialog-head h2 {
+    overflow-wrap:anywhere;
+    font-size:21px}
+
+.dialog-head button {
+    background:var(--soft);
+    border:0;
+    padding:9px 13px;
+    border-radius:8px;
+    cursor:pointer;
+    color:var(--ink)}
+
+.dialog .stage {
+    height:260px;
+    border-radius:13px;
+    margin:15px 0}
+
+.empty {
+    text-align:center;
+    padding:40px;
+    color:var(--sub)}
+
+@keyframes spin {
+    to {
+    transform:rotate(360deg)}
+}
+
+@keyframes bounce {
+    50% {
+    transform:translateY(-20px)}
+}
+
+@keyframes pulse {
+    50% {
+    opacity:.2}
+}
+
+@keyframes ping {
+    70% {
+    transform:scale(1.5);
+    opacity:0}
+}
+
+@keyframes wiggle {
+    25% {
+    transform:rotate(12deg)}
+
+75% {
+    transform:rotate(-12deg)}
+}
+
+@keyframes zoom {
+    50% {
+    transform:scale(1.3)}
+}
+
+@keyframes slide {
+    50% {
+    transform:translateY(-20px)}
+}
+
+@keyframes fade {
+    50% {
+    opacity:.1}
+}
+
+@keyframes flip {
+    50% {
+    transform:rotateY(180deg)}
+}
+
+@keyframes heartbeat {
+    50% {
+    transform:scale(1.2)}
+}
+
+@keyframes jello {
+    50% {
+    transform:skew(12deg)}
+}
+
+@keyframes tada {
+    50% {
+    transform:rotate(12deg) scale(1.15)}
+}
+
+@keyframes left {
+    50% {
+    transform:translateX(-22px)}
+}
+
+@keyframes right {
+    50% {
+    transform:translateX(22px)}
+}
+
+@keyframes up {
+    50% {
+    transform:translateY(-22px)}
+}
+
+@keyframes down {
+    50% {
+    transform:translateY(22px)}
+}
+
+@media(max-width:850px) {
+    .layout {
+    display:block}
+
+.side {
+    width:100%;
+    height:auto;
+    position:relative;
+    padding:12px}
+
+.brand {
+    padding:10px}
+
+.side p {
+    display:none}
+
+.nav {
+    display:flex;
+    overflow:auto}
+
+.nav button {
+    white-space:nowrap}
+
+.main {
+    padding:20px}
+
+.hero {
+    padding:25px}
+}
+  </style>
+ </head>
+ <body>
+  <div class="layout">
+   <aside class="side">
+    <div class="brand">
+     ✦ Tailwind
+     <span>
+      Studio · Esmeralda
+     </span>
+    </div>
+    <p>
+     CATEGORÍAS
+    </p>
+    <nav class="nav" id="nav">
+    </nav>
+   </aside>
+   <main class="main">
+    <div class="top">
+     <div>
+      <strong>
+       Biblioteca de estilos
+      </strong>
+      <br/>
+      <small>
+       Explora las utilidades visualmente
+      </small>
+     </div>
+     <button class="theme" id="theme">
+      ☾ Modo oscuro
+     </button>
+    </div>
+    <section class="hero">
+     <h1>
+      Explora Tailwind CSS · Edición Esmeralda
+     </h1>
+     <p>
+      Descubre estilos, animaciones y diseños en una galería visual e interactiva. Selecciona una categoría o busca una clase.
+     </p>
+     <div class="stats">
+      <div class="stat">
+       <strong id="total">
+        283
+       </strong>
+       <small>
+        Ejemplos
+       </small>
+      </div>
+      <div class="stat">
+       <strong id="categories">
+        10
+       </strong>
+       <small>
+        Categorías
+       </small>
+      </div>
+      <div class="stat">
+       <strong>
+        100%
+       </strong>
+       <small>
+        Visual
+       </small>
+      </div>
+     </div>
+    </section>
+    <div class="tools">
+     <input class="search" id="search" placeholder="🔍 Buscar estilos o clases..."/>
+     <select class="order" id="order">
+      <option value="original">
+       Orden original
+      </option>
+      <option value="az">
+       Nombre A - Z
+      </option>
+      <option value="za">
+       Nombre Z - A
+      </option>
+     </select>
+    </div>
+    <div class="heading">
+     <h2 id="heading">
+      Todos los ejemplos
+     </h2>
+     <span id="counter">
+     </span>
+    </div>
+    <div class="cards" id="gallery">
+    </div>
+    <p class="empty" hidden="" id="empty">
+     No se encontraron ejemplos.
+    </p>
+   </main>
+  </div>
+  <div class="overlay" id="modal">
+   <div class="dialog">
+    <div class="dialog-head">
+     <h2 id="modalTitle">
+     </h2>
+     <button id="close">
+      ✕
+     </button>
+    </div>
+    <p id="modalGroup">
+    </p>
+    <div class="stage" id="modalStage">
+    </div>
+    <p>
+     Demostración visual del estilo seleccionado.
+    </p>
+   </div>
+  </div>
+  <script>
+   const DATA = [
+    {
+        "group": "Texto y tipografía",
+        "name": "color",
+        "cls": "text-blue-300"
+    },
+    {
+        "group": "Texto y tipografía",
+        "name": "background-color",
+        "cls": "bg-yellow-500"
+    },
+    {
+        "group": "Texto y tipografía",
+        "name": "text-shadow",
+        "cls": "text-shadow-lg"
+    },
+    {
+        "group": "Texto y tipografía",
+        "name": "border-color",
+        "cls": "border-pink-400"
+    },
+    {
+        "group": "Texto y tipografía",
+        "name": "text-align",
+        "cls": "text-right"
+    },
+    {
+        "group": "Texto y tipografía",
+        "name": "text-decoration",
+        "cls": "underline"
+    },
+    {
+        "group": "Texto y tipografía",
+        "name": "text-transform",
+        "cls": "uppercase"
+    },
+    {
+        "group": "Texto y tipografía",
+        "name": "box-shadow",
+        "cls": "shadow-lg"
+    },
+    {
+        "group": "Texto y tipografía",
+        "name": "opacity",
+        "cls": "opacity-75"
+    },
+    {
+        "group": "Texto y tipografía",
+        "name": "font-family",
+        "cls": "font-sans"
+    },
+    {
+        "group": "Texto y tipografía",
+        "name": "font-size",
+        "cls": "text-xs"
+    },
+    {
+        "group": "Texto y tipografía",
+        "name": "font-weight",
+        "cls": "font-semibold"
+    },
+    {
+        "group": "Texto y tipografía",
+        "name": "font-style",
+        "cls": "italic"
+    },
+    {
+        "group": "Texto y tipografía",
+        "name": "text-overflow",
+        "cls": "truncate"
+    },
+    {
+        "group": "Texto y tipografía",
+        "name": "text-decoration-color",
+        "cls": "underline-yellow"
+    },
+    {
+        "group": "Texto y tipografía",
+        "name": "text-decoration-style",
+        "cls": "underline-dotted"
+    },
+    {
+        "group": "Texto y tipografía",
+        "name": "text-decoration-thickness",
+        "cls": "underline-thick"
+    },
+    {
+        "group": "Texto y tipografía",
+        "name": "text-align-last",
+        "cls": "text-right-last"
+    },
+    {
+        "group": "Texto y tipografía",
+        "name": "text-justify",
+        "cls": "justify"
+    },
+    {
+        "group": "Texto y tipografía",
+        "name": "line-break",
+        "cls": "break-all"
+    },
+    {
+        "group": "Texto y tipografía",
+        "name": "word-break",
+        "cls": "break-all"
+    },
+    {
+        "group": "Texto y tipografía",
+        "name": "letter-spacing",
+        "cls": "tracking-wider"
+    },
+    {
+        "group": "Texto y tipografía",
+        "name": "word-spacing",
+        "cls": "tracking-wide"
+    },
+    {
+        "group": "Texto y tipografía",
+        "name": "line-height",
+        "cls": "leading-10"
+    },
+    {
+        "group": "Texto y tipografía",
+        "name": "vertical-align",
+        "cls": "align-baseline"
+    },
+    {
+        "group": "Texto y tipografía",
+        "name": "white-space",
+        "cls": "whitespace-nowrap"
+    },
+    {
+        "group": "Texto y tipografía",
+        "name": "break-word",
+        "cls": "break-words"
+    },
+    {
+        "group": "Texto y tipografía",
+        "name": "overflow-wrap",
+        "cls": "overflow-normal"
+    },
+    {
+        "group": "Texto y tipografía",
+        "name": "hyphens",
+        "cls": "hyphens-auto"
+    },
+    {
+        "group": "Transformaciones y transiciones",
+        "name": "transform",
+        "cls": "transform"
+    },
+    {
+        "group": "Transformaciones y transiciones",
+        "name": "transition",
+        "cls": "transition"
+    },
+    {
+        "group": "Transformaciones y transiciones",
+        "name": "transition-property",
+        "cls": "transition"
+    },
+    {
+        "group": "Transformaciones y transiciones",
+        "name": "transition-duration",
+        "cls": "duration-500"
+    },
+    {
+        "group": "Transformaciones y transiciones",
+        "name": "transition-timing-function",
+        "cls": "ease-in"
+    },
+    {
+        "group": "Transformaciones y transiciones",
+        "name": "transition-delay",
+        "cls": "delay-200"
+    },
+    {
+        "group": "Transformaciones y transiciones",
+        "name": "transform-origin",
+        "cls": "origin-center"
+    },
+    {
+        "group": "Transformaciones y transiciones",
+        "name": "scale",
+        "cls": "scale-150"
+    },
+    {
+        "group": "Transformaciones y transiciones",
+        "name": "rotate",
+        "cls": "rotate-90"
+    },
+    {
+        "group": "Transformaciones y transiciones",
+        "name": "skew",
+        "cls": "skew-x-6"
+    },
+    {
+        "group": "Transformaciones y transiciones",
+        "name": "translate",
+        "cls": "-translate-x-4"
+    },
+    {
+        "group": "Transformaciones y transiciones",
+        "name": "perspective",
+        "cls": "perspective-500"
+    },
+    {
+        "group": "Transformaciones y transiciones",
+        "name": "backface-visibility",
+        "cls": "backface-visible"
+    },
+    {
+        "group": "Transformaciones y transiciones",
+        "name": "will-change",
+        "cls": "will-change-transform"
+    },
+    {
+        "group": "Transformaciones y transiciones",
+        "name": "transform-style",
+        "cls": "transform"
+    },
+    {
+        "group": "Transformaciones y transiciones",
+        "name": "perspective-origin",
+        "cls": "origin-bottom"
+    },
+    {
+        "group": "Transformaciones y transiciones",
+        "name": "transform-box",
+        "cls": "box-border"
+    },
+    {
+        "group": "Transformaciones y transiciones",
+        "name": "transform-origin-x",
+        "cls": "origin-left"
+    },
+    {
+        "group": "Transformaciones y transiciones",
+        "name": "transform-origin-y",
+        "cls": "origin-top"
+    },
+    {
+        "group": "Transformaciones y transiciones",
+        "name": "transform-origin-z",
+        "cls": "origin-bottom"
+    },
+    {
+        "group": "Animaciones",
+        "name": "animation",
+        "cls": "animate-spin"
+    },
+    {
+        "group": "Animaciones",
+        "name": "animation-name",
+        "cls": "animate-ping"
+    },
+    {
+        "group": "Animaciones",
+        "name": "animation-duration",
+        "cls": "duration-300"
+    },
+    {
+        "group": "Animaciones",
+        "name": "animation-delay",
+        "cls": "delay-500"
+    },
+    {
+        "group": "Animaciones",
+        "name": "animation-iteration-count",
+        "cls": "animate-bounce"
+    },
+    {
+        "group": "Animaciones",
+        "name": "animation-direction",
+        "cls": "animate-bounce"
+    },
+    {
+        "group": "Animaciones",
+        "name": "animation-fill-mode",
+        "cls": "animate-ping"
+    },
+    {
+        "group": "Animaciones",
+        "name": "animation-play-state",
+        "cls": "animate-spin"
+    },
+    {
+        "group": "Animaciones",
+        "name": "animate-spin",
+        "cls": "animate-pulse"
+    },
+    {
+        "group": "Animaciones",
+        "name": "animate-bounce",
+        "cls": "animate-bounce-x"
+    },
+    {
+        "group": "Animaciones",
+        "name": "animate-ping",
+        "cls": "animate-ping-slow"
+    },
+    {
+        "group": "Animaciones",
+        "name": "animate-scale",
+        "cls": "animate-scale-y"
+    },
+    {
+        "group": "Animaciones",
+        "name": "animate-none",
+        "cls": "animate-none"
+    },
+    {
+        "group": "Animaciones",
+        "name": "animate-reverse",
+        "cls": "animate-reverse"
+    },
+    {
+        "group": "Animaciones",
+        "name": "animate-zoom",
+        "cls": "animate-zoom-in"
+    },
+    {
+        "group": "Animaciones",
+        "name": "animate-slide",
+        "cls": "animate-slide-up"
+    },
+    {
+        "group": "Animaciones",
+        "name": "animate-fade",
+        "cls": "animate-fade-in"
+    },
+    {
+        "group": "Animaciones",
+        "name": "animate-rotate",
+        "cls": "animate-rotate-45"
+    },
+    {
+        "group": "Animaciones",
+        "name": "animate-slide-fade",
+        "cls": "animate-slide-fade-up"
+    },
+    {
+        "group": "Animaciones",
+        "name": "animate-bounce-scale",
+        "cls": "animate-bounce-scale-down"
+    },
+    {
+        "group": "Animaciones",
+        "name": "animate-flip",
+        "cls": "animate-flip-x"
+    },
+    {
+        "group": "Animaciones",
+        "name": "animate-pulse",
+        "cls": "animate-pulse-slow"
+    },
+    {
+        "group": "Animaciones",
+        "name": "animate-wiggle",
+        "cls": "animate-wiggle-slow"
+    },
+    {
+        "group": "Animaciones",
+        "name": "animate-blink",
+        "cls": "animate-blink-slow"
+    },
+    {
+        "group": "Animaciones",
+        "name": "animate-slide-bounce",
+        "cls": "animate-slide-bounce-up"
+    },
+    {
+        "group": "Animaciones",
+        "name": "animate-heartbeat",
+        "cls": "animate-heartbeat-slow"
+    },
+    {
+        "group": "Animaciones",
+        "name": "animate-rubberband",
+        "cls": "animate-rubberband-slow"
+    },
+    {
+        "group": "Animaciones",
+        "name": "animate-head-shake",
+        "cls": "animate-head-shake-slow"
+    },
+    {
+        "group": "Animaciones",
+        "name": "animate-jello",
+        "cls": "animate-jello-slow"
+    },
+    {
+        "group": "Animaciones",
+        "name": "animate-tada",
+        "cls": "animate-tada-slow"
+    },
+    {
+        "group": "Animaciones",
+        "name": "animate-bounce-in-left",
+        "cls": "animate-bounce-in-left-slow"
+    },
+    {
+        "group": "Animaciones",
+        "name": "animate-bounce-in-right",
+        "cls": "animate-bounce-in-right-slow"
+    },
+    {
+        "group": "Animaciones",
+        "name": "animate-bounce-in-up",
+        "cls": "animate-bounce-in-up-slow"
+    },
+    {
+        "group": "Animaciones",
+        "name": "animate-bounce-in-down",
+        "cls": "animate-bounce-in-down-slow"
+    },
+    {
+        "group": "Animaciones",
+        "name": "animate-fade-in-left",
+        "cls": "animate-fade-in-left-slow"
+    },
+    {
+        "group": "Animaciones",
+        "name": "animate-fade-in-right",
+        "cls": "animate-fade-in-right-slow"
+    },
+    {
+        "group": "Animaciones",
+        "name": "animate-fade-in-up",
+        "cls": "animate-fade-in-up-slow"
+    },
+    {
+        "group": "Animaciones",
+        "name": "animate-fade-in-down",
+        "cls": "animate-fade-in-down-slow"
+    },
+    {
+        "group": "Animaciones",
+        "name": "animate-slide-in-left",
+        "cls": "animate-slide-in-left-slow"
+    },
+    {
+        "group": "Animaciones",
+        "name": "animate-slide-in-right",
+        "cls": "animate-slide-in-right-slow"
+    },
+    {
+        "group": "Animaciones",
+        "name": "animate-slide-in-up",
+        "cls": "animate-slide-in-up-slow"
+    },
+    {
+        "group": "Animaciones",
+        "name": "animate-slide-in-down",
+        "cls": "animate-slide-in-down-slow"
+    },
+    {
+        "group": "Animaciones",
+        "name": "animation-timing-function",
+        "cls": "animate-ease-out"
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "border-radius",
+        "cls": "rounded-lg"
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "border-width",
+        "cls": "border-4"
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "border-style",
+        "cls": "border-dashed"
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "border-collapse",
+        "cls": "border-collapse"
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "border-spacing",
+        "cls": "border-separate"
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "outline",
+        "cls": "outline-none"
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "overflow",
+        "cls": "overflow-hidden"
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "overflow-x",
+        "cls": "overflow-x-hidden"
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "overflow-y",
+        "cls": "overflow-y-hidden"
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "z-index",
+        "cls": "z-10"
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "pointer-events",
+        "cls": "pointer-events-none"
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "resize",
+        "cls": "resize-none"
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "cursor",
+        "cls": "cursor-pointer"
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "user-select",
+        "cls": "select-none"
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "filter",
+        "cls": "filter"
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "backdrop-filter",
+        "cls": "backdrop-filter"
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "mix-blend-mode",
+        "cls": "mix-blend-screen"
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "clip-path",
+        "cls": "clip-full"
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "isolation",
+        "cls": "isolation-isolate"
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "shape-outside",
+        "cls": "shape-outside"
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "border",
+        "cls": "border"
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "border-top",
+        "cls": "border-t-2"
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "border-right",
+        "cls": "border-r-4"
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "border-bottom",
+        "cls": "border-b"
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "border-left",
+        "cls": "border-l"
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "border-opacity",
+        "cls": "border-indigo-500/100"
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "divide-y",
+        "cls": "divide-y-reverse"
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "divide-x",
+        "cls": "divide-x-reverse"
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "divide-opacity",
+        "cls": "divide-opacity-75"
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "divide-style",
+        "cls": "divide-dashed"
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "divide-width",
+        "cls": "divide-x-2"
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "backdrop-filter-opacity",
+        "cls": "backdrop-opacity-50"
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "backdrop-blur",
+        "cls": "backdrop-blur-8"
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "backdrop-brightness",
+        "cls": "backdrop-brightness-75"
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "backdrop-contrast",
+        "cls": "backdrop-contrast-125"
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "backdrop-grayscale",
+        "cls": "backdrop-grayscale-50"
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "backdrop-hue-rotate",
+        "cls": "backdrop-hue-rotate-90"
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "backdrop-invert",
+        "cls": "backdrop-invert"
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "backdrop-opacity",
+        "cls": "backdrop-opacity-50"
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "backdrop-saturate",
+        "cls": "backdrop-saturate-150"
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "backdrop-sepia",
+        "cls": "backdrop-sepia-50"
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "mix-blend-overlay",
+        "cls": "mix-blend-darken"
+    },
+    {
+        "group": "Espaciado y tamaños",
+        "name": "margin",
+        "cls": "m-4"
+    },
+    {
+        "group": "Espaciado y tamaños",
+        "name": "margin-top",
+        "cls": "mt-8"
+    },
+    {
+        "group": "Espaciado y tamaños",
+        "name": "margin-right",
+        "cls": "mr-12"
+    },
+    {
+        "group": "Espaciado y tamaños",
+        "name": "margin-bottom",
+        "cls": "mb-16"
+    },
+    {
+        "group": "Espaciado y tamaños",
+        "name": "margin-left",
+        "cls": "ml-20"
+    },
+    {
+        "group": "Espaciado y tamaños",
+        "name": "padding",
+        "cls": "p-6"
+    },
+    {
+        "group": "Espaciado y tamaños",
+        "name": "padding-top",
+        "cls": "pt-10"
+    },
+    {
+        "group": "Espaciado y tamaños",
+        "name": "padding-right",
+        "cls": "pr-16"
+    },
+    {
+        "group": "Espaciado y tamaños",
+        "name": "padding-bottom",
+        "cls": "pb-20"
+    },
+    {
+        "group": "Espaciado y tamaños",
+        "name": "padding-left",
+        "cls": "pl-24"
+    },
+    {
+        "group": "Espaciado y tamaños",
+        "name": "width",
+        "cls": "w-1/2"
+    },
+    {
+        "group": "Espaciado y tamaños",
+        "name": "min-width",
+        "cls": "min-w-64"
+    },
+    {
+        "group": "Espaciado y tamaños",
+        "name": "max-width",
+        "cls": "max-w-3xl"
+    },
+    {
+        "group": "Espaciado y tamaños",
+        "name": "height",
+        "cls": "h-64"
+    },
+    {
+        "group": "Espaciado y tamaños",
+        "name": "min-height",
+        "cls": "min-h-screen"
+    },
+    {
+        "group": "Espaciado y tamaños",
+        "name": "max-height",
+        "cls": "max-h-96"
+    },
+    {
+        "group": "Flexbox",
+        "name": "flex",
+        "cls": "flex"
+    },
+    {
+        "group": "Flexbox",
+        "name": "flex-direction",
+        "cls": "flex-col"
+    },
+    {
+        "group": "Flexbox",
+        "name": "flex-wrap",
+        "cls": "flex-wrap"
+    },
+    {
+        "group": "Flexbox",
+        "name": "justify-content",
+        "cls": "justify-between"
+    },
+    {
+        "group": "Flexbox",
+        "name": "items-center",
+        "cls": "items-center"
+    },
+    {
+        "group": "Flexbox",
+        "name": "align-self",
+        "cls": "self-center"
+    },
+    {
+        "group": "Flexbox",
+        "name": "order",
+        "cls": "order-1"
+    },
+    {
+        "group": "Flexbox",
+        "name": "align-content",
+        "cls": "content-center"
+    },
+    {
+        "group": "Flexbox",
+        "name": "flex-shrink",
+        "cls": "flex-shrink-0"
+    },
+    {
+        "group": "Flexbox",
+        "name": "flex-grow",
+        "cls": "flex-grow"
+    },
+    {
+        "group": "Flexbox",
+        "name": "flex-basis",
+        "cls": "flex-basis-1/4"
+    },
+    {
+        "group": "Grid",
+        "name": "grid",
+        "cls": "grid"
+    },
+    {
+        "group": "Grid",
+        "name": "grid-cols-2",
+        "cls": "grid-cols-2"
+    },
+    {
+        "group": "Grid",
+        "name": "grid-rows-3",
+        "cls": "grid-rows-3"
+    },
+    {
+        "group": "Grid",
+        "name": "auto-cols",
+        "cls": "auto-cols-auto"
+    },
+    {
+        "group": "Grid",
+        "name": "auto-rows",
+        "cls": "auto-rows-auto"
+    },
+    {
+        "group": "Grid",
+        "name": "justify-self",
+        "cls": "justify-self-center"
+    },
+    {
+        "group": "Grid",
+        "name": "grid-cols",
+        "cls": "grid-cols-4"
+    },
+    {
+        "group": "Grid",
+        "name": "grid-rows",
+        "cls": "grid-rows-3"
+    },
+    {
+        "group": "Grid",
+        "name": "grid-auto-flow",
+        "cls": "grid-flow-col"
+    },
+    {
+        "group": "Grid",
+        "name": "grid-auto-cols",
+        "cls": "grid-cols-3-auto"
+    },
+    {
+        "group": "Grid",
+        "name": "grid-auto-rows",
+        "cls": "grid-rows-3-auto"
+    },
+    {
+        "group": "Grid",
+        "name": "gap",
+        "cls": "gap-4"
+    },
+    {
+        "group": "Grid",
+        "name": "justify-items",
+        "cls": "justify-items-center"
+    },
+    {
+        "group": "Grid",
+        "name": "align-items",
+        "cls": "items-start"
+    },
+    {
+        "group": "Grid",
+        "name": "grid-template-columns",
+        "cls": "grid-cols-3"
+    },
+    {
+        "group": "Grid",
+        "name": "grid-template-rows",
+        "cls": "grid-rows-3"
+    },
+    {
+        "group": "Grid",
+        "name": "grid-column-gap",
+        "cls": "gap-x-4"
+    },
+    {
+        "group": "Grid",
+        "name": "grid-row-gap",
+        "cls": "gap-y-4"
+    },
+    {
+        "group": "Grid",
+        "name": "grid-auto-columns",
+        "cls": "grid-cols-auto"
+    },
+    {
+        "group": "Grid",
+        "name": "place-content",
+        "cls": "place-content-center"
+    },
+    {
+        "group": "Grid",
+        "name": "place-items",
+        "cls": "place-items-center"
+    },
+    {
+        "group": "Grid",
+        "name": "place-self",
+        "cls": "place-self-center"
+    },
+    {
+        "group": "Posición y visibilidad",
+        "name": "visibility",
+        "cls": "visible"
+    },
+    {
+        "group": "Posición y visibilidad",
+        "name": "position",
+        "cls": "static"
+    },
+    {
+        "group": "Posición y visibilidad",
+        "name": "top",
+        "cls": "top-0"
+    },
+    {
+        "group": "Posición y visibilidad",
+        "name": "right",
+        "cls": "right-0"
+    },
+    {
+        "group": "Posición y visibilidad",
+        "name": "bottom",
+        "cls": "bottom-0"
+    },
+    {
+        "group": "Posición y visibilidad",
+        "name": "left",
+        "cls": "left-0"
+    },
+    {
+        "group": "Posición y visibilidad",
+        "name": "float",
+        "cls": "float-left"
+    },
+    {
+        "group": "Posición y visibilidad",
+        "name": "clear",
+        "cls": "clear-left"
+    },
+    {
+        "group": "Posición y visibilidad",
+        "name": "display",
+        "cls": "hidden"
+    },
+    {
+        "group": "Posición y visibilidad",
+        "name": "inset",
+        "cls": "inset-0"
+    },
+    {
+        "group": "Posición y visibilidad",
+        "name": "inset-x",
+        "cls": "inset-x-0"
+    },
+    {
+        "group": "Posición y visibilidad",
+        "name": "inset-y",
+        "cls": "inset-y-0"
+    },
+    {
+        "group": "Posición y visibilidad",
+        "name": "inset-x-auto",
+        "cls": "inset-x-auto"
+    },
+    {
+        "group": "Posición y visibilidad",
+        "name": "inset-y-auto",
+        "cls": "inset-y-auto"
+    },
+    {
+        "group": "Interacción y desplazamiento",
+        "name": "overscroll-behavior",
+        "cls": "overscroll-auto"
+    },
+    {
+        "group": "Interacción y desplazamiento",
+        "name": "overscroll-behavior-x",
+        "cls": "overscroll-x-auto"
+    },
+    {
+        "group": "Interacción y desplazamiento",
+        "name": "overscroll-behavior-y",
+        "cls": "overscroll-y-auto"
+    },
+    {
+        "group": "Interacción y desplazamiento",
+        "name": "scroll-behavior",
+        "cls": "scroll-behavior-auto"
+    },
+    {
+        "group": "Interacción y desplazamiento",
+        "name": "object-fit",
+        "cls": "object-contain"
+    },
+    {
+        "group": "Interacción y desplazamiento",
+        "name": "object-position",
+        "cls": "object-center"
+    },
+    {
+        "group": "Interacción y desplazamiento",
+        "name": "touch-action",
+        "cls": "touch-action-none"
+    },
+    {
+        "group": "Interacción y desplazamiento",
+        "name": "scroll-snap-type",
+        "cls": "snap-type-mandatory"
+    },
+    {
+        "group": "Interacción y desplazamiento",
+        "name": "scroll-snap-align",
+        "cls": "snap-align-start"
+    },
+    {
+        "group": "Interacción y desplazamiento",
+        "name": "scroll-padding",
+        "cls": "scroll-padding-4"
+    },
+    {
+        "group": "Interacción y desplazamiento",
+        "name": "scroll-margin",
+        "cls": "scroll-margin-4"
+    },
+    {
+        "group": "Interacción y desplazamiento",
+        "name": "scroll-margin-top",
+        "cls": "scroll-mt-4"
+    },
+    {
+        "group": "Interacción y desplazamiento",
+        "name": "scroll-margin-right",
+        "cls": "scroll-mr-4"
+    },
+    {
+        "group": "Interacción y desplazamiento",
+        "name": "scroll-margin-bottom",
+        "cls": "scroll-mb-4"
+    },
+    {
+        "group": "Interacción y desplazamiento",
+        "name": "scroll-margin-left",
+        "cls": "scroll-ml-4"
+    },
+    {
+        "group": "Interacción y desplazamiento",
+        "name": "scroll-padding-top",
+        "cls": "scroll-pt-4"
+    },
+    {
+        "group": "Interacción y desplazamiento",
+        "name": "scroll-padding-right",
+        "cls": "scroll-pr-4"
+    },
+    {
+        "group": "Interacción y desplazamiento",
+        "name": "scroll-padding-bottom",
+        "cls": "scroll-pb-4"
+    },
+    {
+        "group": "Interacción y desplazamiento",
+        "name": "scroll-padding-left",
+        "cls": "scroll-pl-4"
+    },
+    {
+        "group": "Texto y tipografía",
+        "name": "text-center",
+        "cls": "text-center",
+        "additional": true
+    },
+    {
+        "group": "Texto y tipografía",
+        "name": "text-left",
+        "cls": "text-left",
+        "additional": true
+    },
+    {
+        "group": "Texto y tipografía",
+        "name": "text-lg",
+        "cls": "text-lg",
+        "additional": true
+    },
+    {
+        "group": "Texto y tipografía",
+        "name": "text-2xl",
+        "cls": "text-2xl",
+        "additional": true
+    },
+    {
+        "group": "Texto y tipografía",
+        "name": "font-bold",
+        "cls": "font-bold",
+        "additional": true
+    },
+    {
+        "group": "Texto y tipografía",
+        "name": "font-light",
+        "cls": "font-light",
+        "additional": true
+    },
+    {
+        "group": "Texto y tipografía",
+        "name": "capitalize",
+        "cls": "capitalize",
+        "additional": true
+    },
+    {
+        "group": "Texto y tipografía",
+        "name": "lowercase",
+        "cls": "lowercase",
+        "additional": true
+    },
+    {
+        "group": "Texto y tipografía",
+        "name": "tracking-tight",
+        "cls": "tracking-tight",
+        "additional": true
+    },
+    {
+        "group": "Texto y tipografía",
+        "name": "leading-loose",
+        "cls": "leading-loose",
+        "additional": true
+    },
+    {
+        "group": "Texto y tipografía",
+        "name": "line-through",
+        "cls": "line-through",
+        "additional": true
+    },
+    {
+        "group": "Texto y tipografía",
+        "name": "decoration-wavy",
+        "cls": "decoration-wavy",
+        "additional": true
+    },
+    {
+        "group": "Colores y fondos",
+        "name": "bg-gradient-to-r",
+        "cls": "bg-gradient-to-r",
+        "additional": true
+    },
+    {
+        "group": "Colores y fondos",
+        "name": "from-purple-500",
+        "cls": "from-purple-500",
+        "additional": true
+    },
+    {
+        "group": "Colores y fondos",
+        "name": "to-pink-500",
+        "cls": "to-pink-500",
+        "additional": true
+    },
+    {
+        "group": "Colores y fondos",
+        "name": "bg-red-500",
+        "cls": "bg-red-500",
+        "additional": true
+    },
+    {
+        "group": "Colores y fondos",
+        "name": "bg-green-500",
+        "cls": "bg-green-500",
+        "additional": true
+    },
+    {
+        "group": "Colores y fondos",
+        "name": "bg-indigo-500",
+        "cls": "bg-indigo-500",
+        "additional": true
+    },
+    {
+        "group": "Colores y fondos",
+        "name": "text-red-500",
+        "cls": "text-red-500",
+        "additional": true
+    },
+    {
+        "group": "Colores y fondos",
+        "name": "text-green-600",
+        "cls": "text-green-600",
+        "additional": true
+    },
+    {
+        "group": "Colores y fondos",
+        "name": "bg-opacity-50",
+        "cls": "bg-opacity-50",
+        "additional": true
+    },
+    {
+        "group": "Colores y fondos",
+        "name": "bg-cover",
+        "cls": "bg-cover",
+        "additional": true
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "rounded-full",
+        "cls": "rounded-full",
+        "additional": true
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "rounded-none",
+        "cls": "rounded-none",
+        "additional": true
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "shadow-xl",
+        "cls": "shadow-xl",
+        "additional": true
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "shadow-inner",
+        "cls": "shadow-inner",
+        "additional": true
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "ring-4",
+        "cls": "ring-4",
+        "additional": true
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "ring-purple-400",
+        "cls": "ring-purple-400",
+        "additional": true
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "border-double",
+        "cls": "border-double",
+        "additional": true
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "border-dotted",
+        "cls": "border-dotted",
+        "additional": true
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "blur-sm",
+        "cls": "blur-sm",
+        "additional": true
+    },
+    {
+        "group": "Bordes y efectos",
+        "name": "grayscale",
+        "cls": "grayscale",
+        "additional": true
+    },
+    {
+        "group": "Espaciado y tamaños",
+        "name": "p-2",
+        "cls": "p-2",
+        "additional": true
+    },
+    {
+        "group": "Espaciado y tamaños",
+        "name": "p-4",
+        "cls": "p-4",
+        "additional": true
+    },
+    {
+        "group": "Espaciado y tamaños",
+        "name": "px-8",
+        "cls": "px-8",
+        "additional": true
+    },
+    {
+        "group": "Espaciado y tamaños",
+        "name": "py-6",
+        "cls": "py-6",
+        "additional": true
+    },
+    {
+        "group": "Espaciado y tamaños",
+        "name": "m-2",
+        "cls": "m-2",
+        "additional": true
+    },
+    {
+        "group": "Espaciado y tamaños",
+        "name": "mx-auto",
+        "cls": "mx-auto",
+        "additional": true
+    },
+    {
+        "group": "Espaciado y tamaños",
+        "name": "w-full",
+        "cls": "w-full",
+        "additional": true
+    },
+    {
+        "group": "Espaciado y tamaños",
+        "name": "w-1/3",
+        "cls": "w-1/3",
+        "additional": true
+    },
+    {
+        "group": "Espaciado y tamaños",
+        "name": "h-20",
+        "cls": "h-20",
+        "additional": true
+    },
+    {
+        "group": "Espaciado y tamaños",
+        "name": "size-16",
+        "cls": "size-16",
+        "additional": true
+    },
+    {
+        "group": "Flexbox",
+        "name": "justify-center",
+        "cls": "justify-center",
+        "additional": true
+    },
+    {
+        "group": "Flexbox",
+        "name": "justify-around",
+        "cls": "justify-around",
+        "additional": true
+    },
+    {
+        "group": "Flexbox",
+        "name": "items-end",
+        "cls": "items-end",
+        "additional": true
+    },
+    {
+        "group": "Flexbox",
+        "name": "flex-row-reverse",
+        "cls": "flex-row-reverse",
+        "additional": true
+    },
+    {
+        "group": "Flexbox",
+        "name": "gap-8",
+        "cls": "gap-8",
+        "additional": true
+    },
+    {
+        "group": "Grid",
+        "name": "grid-cols-1",
+        "cls": "grid-cols-1",
+        "additional": true
+    },
+    {
+        "group": "Grid",
+        "name": "grid-cols-3",
+        "cls": "grid-cols-3",
+        "additional": true
+    },
+    {
+        "group": "Grid",
+        "name": "col-span-2",
+        "cls": "col-span-2",
+        "additional": true
+    },
+    {
+        "group": "Grid",
+        "name": "grid-flow-row",
+        "cls": "grid-flow-row",
+        "additional": true
+    },
+    {
+        "group": "Grid",
+        "name": "place-items-start",
+        "cls": "place-items-start",
+        "additional": true
+    },
+    {
+        "group": "Posición y visibilidad",
+        "name": "relative",
+        "cls": "relative",
+        "additional": true
+    },
+    {
+        "group": "Posición y visibilidad",
+        "name": "absolute",
+        "cls": "absolute",
+        "additional": true
+    },
+    {
+        "group": "Posición y visibilidad",
+        "name": "sticky",
+        "cls": "sticky",
+        "additional": true
+    },
+    {
+        "group": "Posición y visibilidad",
+        "name": "fixed",
+        "cls": "fixed",
+        "additional": true
+    },
+    {
+        "group": "Posición y visibilidad",
+        "name": "invisible",
+        "cls": "invisible",
+        "additional": true
+    },
+    {
+        "group": "Transformaciones y transiciones",
+        "name": "hover:scale-110",
+        "cls": "hover:scale-110",
+        "additional": true
+    },
+    {
+        "group": "Transformaciones y transiciones",
+        "name": "hover:rotate-6",
+        "cls": "hover:rotate-6",
+        "additional": true
+    },
+    {
+        "group": "Transformaciones y transiciones",
+        "name": "transition-all",
+        "cls": "transition-all",
+        "additional": true
+    },
+    {
+        "group": "Transformaciones y transiciones",
+        "name": "duration-1000",
+        "cls": "duration-1000",
+        "additional": true
+    },
+    {
+        "group": "Transformaciones y transiciones",
+        "name": "ease-out",
+        "cls": "ease-out",
+        "additional": true
+    },
+    {
+        "group": "Interacción y desplazamiento",
+        "name": "cursor-not-allowed",
+        "cls": "cursor-not-allowed",
+        "additional": true
+    },
+    {
+        "group": "Interacción y desplazamiento",
+        "name": "select-text",
+        "cls": "select-text",
+        "additional": true
+    },
+    {
+        "group": "Interacción y desplazamiento",
+        "name": "overflow-auto",
+        "cls": "overflow-auto",
+        "additional": true
+    },
+    {
+        "group": "Interacción y desplazamiento",
+        "name": "scroll-smooth",
+        "cls": "scroll-smooth",
+        "additional": true
+    },
+    {
+        "group": "Interacción y desplazamiento",
+        "name": "snap-x",
+        "cls": "snap-x",
+        "additional": true
+    }
+];
+
+function addedDemo(d) {
+
+    const c = d.cls;
+
+    const item = (style, txt = 'Ejemplo visual') => '<div class="sample" style="' + style + '">' + txt + '</div>';
+
+    if (c === 'bg-gradient-to-r' || c.startsWith('from-') || c.startsWith('to-')) return item('background:linear-gradient(90deg,#8b5cf6,#ec4899);padding:24px;color:white', 'Degradado');
+
+    if (c.startsWith('bg-')) { const color = { 'bg-red-500': '#ef4444', 'bg-green-500': '#22c55e', 'bg-indigo-500': '#6366f1', 'bg-opacity-50': '#8b5cf680', 'bg-cover': '#7c3aed' }[c] || '#7c3aed'; return item('background:' + color + ';padding:23px', 'Color de fondo') }
+
+    if (c.startsWith('text-')) { const st = { 'text-center': 'text-align:center;width:100%', 'text-left': 'text-align:left;width:100%', 'text-lg': 'font-size:20px', 'text-2xl': 'font-size:30px', 'text-red-500': 'color:#ef4444;background:white', 'text-green-600': 'color:#16a34a;background:white' }[c] || ''; return item(st, 'Texto de muestra') }
+
+    if (c.startsWith('font-') || ['capitalize', 'lowercase', 'tracking-tight', 'leading-loose', 'line-through', 'decoration-wavy'].includes(c)) { const st = { 'font-bold': 'font-weight:900', 'font-light': 'font-weight:300', 'capitalize': 'text-transform:capitalize', 'lowercase': 'text-transform:lowercase', 'tracking-tight': 'letter-spacing:-2px', 'leading-loose': 'line-height:2.5', 'line-through': 'text-decoration:line-through', 'decoration-wavy': 'text-decoration:underline wavy #f59e0b' }[c] || ''; return item(st, 'TEXTO de ejemplo') }
+
+    if (c.startsWith('rounded-') || c.startsWith('shadow-') || c.startsWith('ring-') || c.startsWith('border-') || c === 'blur-sm' || c === 'grayscale') { const st = { 'rounded-full': 'border-radius:999px', 'rounded-none': 'border-radius:0', 'shadow-xl': 'box-shadow:0 16px 25px #0005', 'shadow-inner': 'box-shadow:inset 0 5px 14px #0007', 'ring-4': 'outline:4px solid #a78bfa', 'ring-purple-400': 'outline:5px solid #c4b5fd', 'border-double': 'border:8px double #4338ca', 'border-dotted': 'border:5px dotted #4338ca', 'blur-sm': 'filter:blur(2px)', 'grayscale': 'filter:grayscale(1)' }[c] || ''; return item(st, 'Bordes y efectos') }
+
+    if (c.startsWith('p-') || c.startsWith('px-') || c.startsWith('py-') || c.startsWith('m-') || c.startsWith('mx-') || c.startsWith('w-') || c.startsWith('h-') || c.startsWith('size-')) { const st = { 'p-2': 'padding:8px', 'p-4': 'padding:16px', 'px-8': 'padding-left:32px;padding-right:32px', 'py-6': 'padding-top:24px;padding-bottom:24px', 'm-2': 'margin:8px', 'mx-auto': 'margin-inline:auto', 'w-full': 'width:90%', 'w-1/3': 'width:33%', 'h-20': 'height:80px', 'size-16': 'width:64px;height:64px' }[c] || ''; return item(st + ';display:grid;place-items:center', 'Tamaño') }
+
+    if (['justify-center', 'justify-around', 'items-end', 'flex-row-reverse', 'gap-8', 'grid-cols-1', 'grid-cols-3', 'col-span-2', 'grid-flow-row', 'place-items-start'].includes(c)) { let st = c.includes('grid') || c.includes('col-span') || c.includes('place-items') ? 'display:grid;grid-template-columns:repeat(3,1fr);' : 'display:flex;'; if (c === 'justify-around') st += 'justify-content:space-around;'; if (c === 'items-end') st += 'align-items:end;'; if (c === 'flex-row-reverse') st += 'flex-direction:row-reverse;'; if (c === 'gap-8') st += 'gap:32px;'; if (c === 'grid-cols-1') st += 'grid-template-columns:1fr;'; if (c === 'col-span-2') st += 'grid-template-columns:repeat(3,1fr);'; if (c === 'place-items-start') st += 'justify-items:start;'; return '<div class="mini" style="' + st + '"><i></i><i></i><i></i></div>' }
+
+    if (['relative', 'absolute', 'sticky', 'fixed', 'invisible'].includes(c)) return '<div style="position:relative;width:80%;height:95px;border:2px dashed #b8a5e8;border-radius:12px"><div class="sample" style="position:absolute;' + (c === 'invisible' ? 'visibility:hidden;' : '') + 'top:12px;right:12px"*>' + c + '</div></div>';
+
+    if (c.startsWith('hover:')) return item('transition:transform .4s;cursor:pointer', 'Pasa el cursor');
+
+    if (c.startsWith('transition') || c.startsWith('duration') || c.startsWith('ease')) return item('animation:zoom 2s ease-in-out infinite alternate', 'Transición');
+
+    if (c === 'cursor-not-allowed') return item('cursor:not-allowed', 'Cursor no permitido');
+
+    if (c === 'select-text') return item('user-select:text', 'Selecciona este texto');
+
+    if (c === 'overflow-auto') return '<div style="height:70px;overflow:auto;background:white;border-radius:9px;padding:10px;width:75%">Desplaza este cuadro para ver más contenido. Este ejemplo muestra el desbordamiento automático del elemento y su barra de desplazamiento.</div>';
+
+    if (c === 'scroll-smooth' || c === 'snap-x') return '<div style="display:flex;gap:12px;overflow:auto;scroll-snap-type:x mandatory;width:80%"><div class="sample" style="flex:none;scroll-snap-align:start">1</div><div class="sample" style="flex:none;scroll-snap-align:start">2</div><div class="sample" style="flex:none;scroll-snap-align:start">3</div></div>';
+
+    return item('', 'Ejemplo visual')
+}
+
+function demo(d) {    
+if (d.additional) return addedDemo(d); let name = d.name, c = d.cls, style = '', text = 'Ejemplo visual', hint = 'Vista previa del efecto', type = 'normal'; const set = (s, t) => { style = s; if (t) text = t };
+
+    if (name === 'color') set('color:#2563eb;background:transparent', 'Texto azul');
+
+    else if (name === 'background-color') set('background:#eab308;color:#422006', 'Fondo amarillo');
+
+    else if (name === 'text-shadow') set('text-shadow:3px 4px 5px #2229', 'Sombra de texto');
+
+    else if (name === 'border-color') set('border:4px solid #f472b6', 'Borde rosado');
+
+    else if (name === 'text-align') set('width:85%;text-align:right', 'Alineado a la derecha');
+
+    else if (name === 'text-decoration') set('text-decoration:underline', 'Subrayado');
+
+    else if (name === 'text-transform') set('text-transform:uppercase', 'texto en mayúsculas');
+
+    else if (name === 'box-shadow') set('box-shadow:0 15px 25px #42308c70', 'Con sombra');
+
+    else if (name === 'opacity') set('opacity:.75', '75 % opacidad');
+
+    else if (name === 'font-family') set('font-family:Arial,sans-serif', 'Fuente sans serif');
+
+    else if (name === 'font-size') set('font-size:12px', 'Texto pequeño');
+
+    else if (name === 'font-weight') set('font-weight:600', 'Semibold');
+
+    else if (name === 'font-style') set('font-style:italic', 'Texto en cursiva');
+
+    else if (name === 'text-overflow') set('white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:125px', 'Este texto es demasiado largo para caber');
+
+    else if (name.startsWith('text-decoration-')) set('text-decoration:underline;text-decoration-color:#eab308;text-decoration-style:' + (name.endsWith('style') ? 'dotted' : 'solid') + ';text-decoration-thickness:' + (name.endsWith('thickness') ? '4px' : '2px'), 'Subrayado');
+
+    else if (name === 'letter-spacing') set('letter-spacing:5px', 'ESPACIADO');
+
+    else if (name === 'word-spacing') set('word-spacing:12px', 'Dos palabras separadas');
+
+    else if (name === 'line-height') set('line-height:2.5', 'Primera línea<br>Segunda línea');
+
+    else if (name === 'text-align-last') set('text-align-last:right;width:80%', 'Última línea a la derecha');
+
+    else if (name === 'text-justify') set('text-align:justify;width:80%', 'Un texto más largo que ocupa el ancho disponible');
+
+    else if (name.includes('break') || name === 'white-space' || name === 'overflow-wrap' || name === 'hyphens') set('max-width:115px;overflow-wrap:anywhere', 'Supercalifragilisticoespialidoso');
+
+    else if (name === 'vertical-align') set('vertical-align:baseline', 'Línea base');
+
+    else if (name === 'transform' || name === 'rotate') set('transform:rotate(30deg)', 'Rotación');
+
+    else if (name === 'scale') set('transform:scale(1.35)', 'Escala 150 %');
+
+    else if (name === 'skew') set('transform:skewX(12deg)', 'Inclinación');
+
+    else if (name === 'translate') set('transform:translateX(-25px)', 'Desplazado');
+
+    else if (name.includes('origin')) set('transform-origin:left top;transform:rotate(-12deg)', 'Origen');
+
+    else if (name === 'perspective' || name === 'transform-style' || name === 'backface-visibility' || name === 'transform-box') set('transform:perspective(500px) rotateY(35deg)', 'Perspectiva 3D');
+
+    else if (name.startsWith('transition') || name === 'will-change') set('cursor:pointer', 'Pasa el cursor');
+
+    else if (d.group === 'Animaciones') { let a = 'bounce'; if (c.includes('spin')) a = 'spin'; else if (c.includes('ping')) a = 'ping'; else if (c.includes('pulse') || c.includes('blink')) a = 'pulse'; else if (c.includes('wiggle') || c.includes('shake')) a = 'wiggle'; else if (c.includes('zoom') || c.includes('scale') || c.includes('rubber')) a = 'zoom'; else if (c.includes('slide')) a = 'slide'; else if (c.includes('fade')) a = 'fade'; else if (c.includes('flip')) a = 'flip'; else if (c.includes('heartbeat')) a = 'heartbeat'; else if (c.includes('jello')) a = 'jello'; else if (c.includes('tada')) a = 'tada'; else if (c.includes('left')) a = 'left'; else if (c.includes('right')) a = 'right'; else if (c.includes('up')) a = 'up'; else if (c.includes('down')) a = 'down'; set('animation:' + a + ' 1.7s ease-in-out infinite alternate', c.includes('none') ? 'Sin animación' : 'Animación'); if (c.includes('none')) style = 'animation:none' }
+
+    else if (name === 'border-radius') set('border-radius:24px', 'Bordes redondos');
+
+    else if (name === 'border-width' || name === 'border') set('border:5px solid #332275', 'Borde');
+
+    else if (name === 'border-style') set('border:4px dashed #332275', 'Borde discontinuo');
+
+    else if (name.startsWith('border-') || name.startsWith('divide-')) set('border:3px solid #a78bfa', 'Borde aplicado');
+
+    else if (name === 'outline') set('outline:none', 'Sin contorno');
+
+    else if (name.startsWith('overflow')) set('width:115px;height:60px;overflow:hidden', 'Contenido que excede el espacio disponible');
+
+    else if (name === 'cursor') set('cursor:pointer', 'Pasa el cursor');
+
+    else if (name === 'user-select') set('user-select:none', 'Intenta seleccionar');
+
+    else if (name === 'pointer-events') set('pointer-events:none', 'Sin interacción');
+
+    else if (name === 'resize') set('resize:none', 'Tamaño fijo');
+
+    else if (name === 'filter') set('filter:grayscale(1)', 'Escala de grises');
+
+    else if (name.startsWith('backdrop')) set('background:#7955d877;backdrop-filter:blur(6px) saturate(1.5)', 'Efecto de fondo');
+
+    else if (name.startsWith('mix-blend')) set('mix-blend-mode:screen', 'Mezcla de capas');
+
+    else if (name === 'clip-path') set('clip-path:polygon(0 0,100% 0,100% 70%,0 100%)', 'Recorte');
+
+    else if (name === 'opacity') set('opacity:.75');
+
+    else if (name.startsWith('margin')) set('margin:20px;outline:2px dashed #a78bfa', 'Margen exterior');
+
+    else if (name.startsWith('padding')) set('padding:28px', 'Relleno interior');
+
+    else if (name === 'width') set('width:50%', '50 % ancho');
+
+    else if (name === 'min-width') set('min-width:180px', 'Ancho mínimo');
+
+    else if (name === 'max-width') set('max-width:155px', 'Ancho máximo');
+
+    else if (name === 'height') set('height:100px', 'Altura');
+
+    else if (name === 'min-height') set('min-height:100px', 'Altura mínima');
+
+    else if (name === 'max-height') set('max-height:65px;overflow:hidden', 'Altura máxima');
+
+    else if (d.group === 'Flexbox' || d.group === 'Grid') { type = 'mini'; hint = 'Distribución de elementos'; }
+
+    else if (d.group === 'Posición y visibilidad') { if (name === 'display') set('opacity:.3;border:2px dashed #7d5be3;background:transparent;color:#6659a1', 'Elemento oculto'); else set('position:relative;top:-8px;left:8px', 'Posición'); }
+
+    else if (d.group === 'Interacción y desplazamiento') { if (name === 'object-fit' || name === 'object-position') set('background:linear-gradient(45deg,#22c55e,#3b82f6);border-radius:35px', 'Objeto'); else set('outline:2px dashed #a78bfa', 'Desplazamiento'); }
+
+    else if (name === 'z-index') set('box-shadow:18px 12px 0 #f9a8d4', 'Capa superior');
+
+    if (type === 'mini') { let extra = ''; if (d.group === 'Grid') { extra = 'display:grid;grid-template-columns:repeat(' + (c.includes('cols-4') ? '4' : c.includes('cols-3') ? '3' : '2') + ',1fr);align-content:center;'; } else { extra = 'display:flex;' + (c.includes('col') ? 'flex-direction:column;' : '') + (c.includes('between') ? 'justify-content:space-between;' : 'justify-content:center;') + (c.includes('wrap') ? 'flex-wrap:wrap;' : '') + 'align-items:center;'; } return '<div class="mini" style="' + extra + '"><i></i><i></i><i></i><i></i></div>' }
+
+    return '<div class="sample" style="' + style + '">' + text + '</div>';
+
+}
+
+
+
+const cats = [...new Set(DATA.map(x => x.group))]; let selected = 'Todas'; const nav = document.querySelector('#nav'), gallery = document.querySelector('#gallery'), search = document.querySelector('#search'), order = document.querySelector('#order');
+
+function buildNav() { nav.replaceChildren();['Todas', ...cats].forEach(cat => { const b = document.createElement('button'); b.className = selected === cat ? 'active' : ''; const n = document.createElement('span'); n.textContent = cat; const count = document.createElement('em'); count.textContent = cat === 'Todas' ? DATA.length : DATA.filter(x => x.group === cat).length; b.append(n, count); b.onclick = () => { selected = cat; buildNav(); render() }; nav.append(b) }) }
+
+function render() { const q = search.value.toLowerCase().trim(); let items = DATA.filter(d => (selected === 'Todas' || d.group === selected) && [d.cls, d.name, d.group].some(x => x.toLowerCase().includes(q))); if (order.value === 'az') items.sort((a, b) => a.cls.localeCompare(b.cls)); if (order.value === 'za') items.sort((a, b) => b.cls.localeCompare(a.cls)); gallery.replaceChildren(); const frag = document.createDocumentFragment(); items.forEach(d => { const card = document.createElement('article'); card.className = 'card'; const stage = document.createElement('div'); stage.className = 'stage'; stage.innerHTML = demo(d); const info = document.createElement('div'); info.className = 'info'; const h = document.createElement('h3'); h.textContent = d.cls; const p = document.createElement('p'); p.textContent = d.name; const tag = document.createElement('span'); tag.className = 'tag'; tag.textContent = d.group; const btn = document.createElement('button'); btn.className = 'expand'; btn.textContent = 'Ampliar ejemplo'; btn.onclick = () => openModal(d); info.append(h, p, tag, btn); card.append(stage, info); frag.append(card) }); gallery.append(frag); document.querySelector('#heading').textContent = selected === 'Todas' ? 'Todos los ejemplos' : selected; document.querySelector('#counter').textContent = items.length + ' resultados'; document.querySelector('#empty').hidden = items.length !== 0 }
+
+function openModal(d) { document.querySelector('#modalTitle').textContent = d.cls; document.querySelector('#modalGroup').textContent = d.group; document.querySelector('#modalStage').innerHTML = demo(d); document.querySelector('#modal').classList.add('open') }
+
+function closeModal() { document.querySelector('#modal').classList.remove('open') }
+
+document.querySelector('#close').onclick = closeModal; document.querySelector('*#modal').onclick = e => { if (e.target.id === 'modal') closeModal() }; document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal() }); document.querySelector('*#theme').onclick = () => { document.body.classList.toggle('dark'); document.querySelector('#theme').textContent = document.body.classList.contains('dark') ? '☀ Modo claro' : '☾ Modo oscuro' }; search.oninput = render; order.onchange = render; document.querySelector('#total').textContent = DATA.length; document.querySelector('#categories').textContent = cats.length; buildNav(); render();
+  </script>
+ </body>
+</html>
